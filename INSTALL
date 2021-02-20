@@ -6,4 +6,4 @@ Install from project
 
   1. Load project from https://github.com/a513/PythonPKCS11Gost
   2. Unpack the project
-  3. Run `python setup.py install`
+  3. Run `sudo python3 setup.py install`
