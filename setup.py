@@ -32,4 +32,4 @@ setup(name = 'pyp11',
     author="Vladimir Orlov",
     author_email="vorlov@lissi.ru",
     ext_modules = [mdl],
-    py_modules=['pip795'])
+    py_modules=['Token'])
