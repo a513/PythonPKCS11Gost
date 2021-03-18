@@ -52,8 +52,7 @@ class Token:
                 tokinf = v[3]
                 sn = tokinf[3].strip()
                 if (self.sn != sn):
-                    print ('Серийный номер токена=\"' + sn + '\" не совпадает с заданным \"' + self.sn + '\"')
-                    status = "Плохой серийный номер"
+                    status = 'Серийный номер токена=\"' + sn + '\" не совпадает с заданным \"' + self.sn + '\"'
                     dd = ''
                     return (dd, status)
                 status = ''

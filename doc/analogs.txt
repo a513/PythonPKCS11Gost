@@ -1,0 +1,52 @@
+Соответствие операторов модуля pyp11 и методов класса Token
+<handle> := <дескриптор библиотеки pkcs11>
+<slot> := <дескриптор слота с токеном>
+<error> := <переменная с текстом ошибки>
+<ret> := <результат выполнения оператора>
+<cert_der_hex> := <сертификат в DER-формате в HEX-кодировке>
+
+===================================================================================================================
+#Инициализация пользовательского PIN-кода
+<ret> = pyp11.inituserpin (<handle>, <slot>, <SO-PIN>, <USER-PIN>)
+<ret>, <error> = <идентификатор объекта>.inituserpin (<SO-PIN>, <USER-PIN>)
+#Смена USER-PIN кода
+<ret> = pyp11.setpin (<handle>, <slot>, 'user', <USER-PIN старый>, <USER-PIN новый>)
+<ret>, <error> = t1.changeuserpin (<USER-PIN старый>, <USER-PIN новый>)
+#Смена SO-PIN кода
+<ret> = pyp11.setpin (<handle>, <slot>, 'so', <SO-PIN старый>, <SO-PIN новый>)
+<ret>, <error> = t1.changesopin (<SO-PIN старый>, <SO-PIN новый>)
+#Login
+<ret> = pyp11.login (<handle>, <slot>, <USER-PIN>)
+<ret>, <error> = t1.login (<USER-PIN>)
+#Logout
+<ret> = pyp11.logout (<handle>, <slot>)
+<ret>, <error> = t1.logout ()
+#Закрытие сессии
+<ret> = pyp11.closesession (<handle>)
+<ret>, <error> = t1.closesession ()
+#Список сертификатов на токене
+<ret> = pyp11.listcerts (<handle>, <slot>)
+<ret>, <error> = t1.listcerts ()
+#Список объектов на токене
+<ret> = pyp11.listobjects (<handle>, <slot>, <'cert' | 'pubkey' | 'privkey' | 'data' | 'all'> [, 'value'])
+<ret>, <error> = t1.listobjects (<'cert' | 'pubkey' | 'privkey' | 'data' | 'all'> [, 'value'])
+#Разбор сертификата
+<ret> = pyp11.parsecert (<handle>, <slot>, <cert_der_hex>)
+<ret>, <error> = t1.parsecert(<cert_der_hex>)
+#Импорт сертификата
+<ret> = pyp11.importcert (<handle>, <slot>, <cert_der_hex>, <Метка сертификата>)
+<ret>, <error> = t1.importcert(<cert_der_hex>, <Метка сертификата>)
+#Вычисление хэша
+<ret> = pyp11.digest (<handle>, <slot>, <тип алгоритма>, <контент>)
+<ret>, <error> = t1.digest(<тип алгоритма>, <контент>)
+#Вычисление электронной подписи
+<ret> = pyp11.digest (<handle>, <slot>, <механизм подписи>, <хэш от контента>, <CKA_ID | handle закрытого ключа>)
+<ret>, <error> = t1.digest(<механизм подписи>, <хэш от контента>, <CKA_ID | handle закрытого ключа>)
+#Проверка электронной подписи
+<ret> = pyp11.verify (<handle>, <slot>, <хэш от контента>, <подпись>, <asn1-структура subjectpublickeyinfo в hex>)
+<ret>, <error> = t1.verify(<хэш от контента>, <подпись>, <asn1-структура subjectpublickeyinfo в hex>)
+#Генерация ключевой пары
+<ret> = pyp11.keypair (<handle>, <slot>, <тип ключа>, <OID криптопараметра>, <CKA_LABEL>)
+<ret>, <error> = t1.keypair(<тип ключа>, <OID криптопараметра>, <CKA_LABEL>)
+
+
