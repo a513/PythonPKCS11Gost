@@ -238,11 +238,26 @@ class Token:
     	dd = 0
     	status = e1
     return (dd, status)
-#Сменить пользовательский PIN-код
+#Сменить  USER-PIN-код
   def changeuserpin(self, oldpin, newpin):
+#type= 'so' | 'user'
     try:
         status = ''
         dd = pyp11.setpin (self.handle, self.slotid, 'user', oldpin, newpin)
+    except:
+    	e = sys.exc_info()[1]
+    	e1 = e.args[0]
+#Возвращаеи текст ошибки в status
+    	dd = 0
+    	status = e1
+    self.closesession ()
+    return (dd, status)
+#Сменить  SO-PIN-код
+  def changesopin(self, oldpin, newpin):
+#type= 'so' | 'user'
+    try:
+        status = ''
+        dd = pyp11.setpin (self.handle, self.slotid, 'so', oldpin, newpin)
     except:
     	e = sys.exc_info()[1]
     	e1 = e.args[0]

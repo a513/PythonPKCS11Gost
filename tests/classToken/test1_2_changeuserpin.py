@@ -53,7 +53,7 @@ if (t1.returncode != ''):
 if (t1.flags.count('USER_PIN_TO_BE_CHANGED') > 0 ):
     print ('Требуется сменить пользовательский (use) PIN-код')
 #    pyp11.logout(libid, 0)
-    dd2 = pyp11.setpin (libid, 0, 'user',"11111111", '01234567')
+    dd2 = t1.changeuserpin ("11111111", '01234567')
 
 print ('\n\tТокен (' + lab + '), slot=' + str(slotid) +  ' готов к использованию. Храните в секрете PIN-коды\n')
 tinfo = t1.tokinfo()
